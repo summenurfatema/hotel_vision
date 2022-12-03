@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/UserContext';
 import { FaGoogle } from 'react-icons/fa'
 import toast from 'react-hot-toast'
+import { setAuthToken } from '../../token/setAuthToken';
 
 
 const Login = () => {
@@ -16,8 +17,8 @@ const Login = () => {
 
         signIn(email, password)
             .then(result => {
-                const user = result.user
                 toast.success('Login successful')
+                setAuthToken(result.user)
             })
             .catch(err => console.log(err))
     }
@@ -25,7 +26,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
-            .then(result => console.log(result))
+            .then(result => setAuthToken(result.user))
             .catch(err => console.log(err))
     }
 

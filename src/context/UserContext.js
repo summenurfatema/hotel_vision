@@ -32,6 +32,7 @@ const UserContext = ({ children }) => {
     // signout
 
     const logOut = () => {
+        localStorage.removeItem('vision-token')
         return signOut(auth)
     }
 

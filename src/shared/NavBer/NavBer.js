@@ -22,7 +22,11 @@ const NavBer = () => {
                         {menuItem}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Vision</a>
+                <div className="flex items-center">
+                    <p className='font-bold text-2xl'>Visi</p>
+                    <div className='w-5 h-5 border-4 border-dotted rounded-full animate-spin border-blue-600 px-1'></div>
+                    <p className='font-bold text-2xl'>n</p>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -55,8 +59,8 @@ const NavBer = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
 
     );
 };

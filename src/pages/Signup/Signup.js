@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/UserContext';
 import { FaGoogle } from 'react-icons/fa'
+import { setAuthToken } from '../../token/setAuthToken';
 
 const Signup = () => {
     const { createUser, updateUser, verifyEmail, googleSignIn } = useContext(AuthContext)
@@ -30,7 +31,7 @@ const Signup = () => {
                 // console.log(imgData.data.display_url)
                 createUser(email, password)
                     .then(result => {
-
+                        setAuthToken(result.user)
                         //  updateUser
                         updateUser(name, imgData.data.display_url)
 
@@ -50,7 +51,7 @@ const Signup = () => {
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
-            .then(result => console.log(result.user.photoURL))
+            .then(result => setAuthToken(result.user))
             .catch(err => console.log(err))
     }
 
